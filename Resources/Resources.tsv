@@ -1,0 +1,52 @@
+*Variables*							
+${PRODUCT1}	${100}						
+${PRODUCT2}	${50}						
+${DISCOUNT1}	${5}						
+${DISCOUNT2}	${0}						
+${PERCENT}	${100}						
+							
+*Keywords*							
+Total discount sum	[Arguments]	${discount1}	${discount2}				
+	[Documentation]	This Keyword calculates the total amount of the discount. Accepts two numbers in the 					
+	...	parameters and returns the sum of these numbers.					
+	...						
+	...	For example:					
+	...	${sum}= \ \ \ Total discount sum \ \ \ ${10} \ \ \ ${10} \ \ \ 					
+	...	${sum}= \ \ \ 20					
+	${total_discount_sum}=	math_operations.Add	${discount1}	${discount2}			
+	[Return]	${total_discount_sum}					
+							
+Total price price with discount	[Arguments]	${product1}	${product2}	${total_discount_price}			
+	[Documentation]	This Keyword calculates the total cost of the goods with discount. Accepts in the parameters					
+	...	three quantities - the cost of the first product, the cost of the second product and the total					
+	...	discount, and displays the total cost of goods in the log with discount.					
+	...						
+	...	For example:					
+	...	${price}= \ \ \ Total price price with discount \ \ \ ${5} \ \ \ ${5} \ \ \ \ ${2}					
+	...	${price}= \ \ \ 8					
+	${total_price}=	math_operations.Add	${product1}	${product2}			
+	${total_price_with_discount}=	Calculation of price with discount	${total_price}	${total_discount_price}			
+	Log	total_discount_price ${total_discount_price}	console=true				
+	Log	total_price_with_discount ${total_price_with_discount}	console=true				
+							
+Calculation of discount sum	[Arguments]	${full_price}	${discount_percent}				
+	[Documentation]	This Keyword calculates the discount amount. Accepts two parameters in the parameters -					
+	...	the cost of the goods and the discount percentage, but returns the discount amount.					
+	...						
+	...	For example:					
+	...	${discount}= \ \ \ Calculation of discount sum \ \ \ ${10} \ \ \ ${50} \ \ \ 					
+	...	${discount}= \ \ \ 5					
+	${temp}=	math_operations.multiply	${full_price}	${discount_percent}			
+	${discount}=	math_operations.divide	${temp}	${PERCENT}			
+	[Return]	${discount}					
+							
+Calculation of price with discount	[Arguments]	${price}	${discount_price}				
+	[Documentation]	This Keyword calculates the value of the goods with discount. Accepts in the parameters two 					
+	...	quantities - the value of the goods and the size of the discount and returns the value of the					
+	...	goods with discount.					
+	...						
+	...	For example:					
+	...	${price}= \ \ \ Calculation of price with discount \ \ \ ${10} \ \ \ ${3} \ \ \ 					
+	...	${price}= \ \ \ 7					
+	${price_discount}=	math_operations.Subtract	${price}	${discount_price}			
+	[Return]	${price_discount}					
