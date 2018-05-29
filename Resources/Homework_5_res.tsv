@@ -1,0 +1,22 @@
+*Keywords*							
+Verify UI	[Return]	FAILED					
+							
+Verify backend	[Return]	PASSED					
+							
+Edit Config	[Arguments]	${value}					
+	LOG	parameter ${value} added	console=true				
+							
+Edit loop	: FOR	${value}	IN	host	username	password	
+		Edit Config	${value}				
+		Backup Configuration					
+							
+Backup Configuration	LOG	store configuration file	console=true				
+							
+Restore Configuration	LOG	restore configuration file	console=true				
+							
+Run	[Arguments]	${value}					
+	LOG	directory robot_${value} was created	console=true				
+							
+Login To Remote Host	LOG	Login To Remote Host	console=true				
+							
+Exit From Remote Host	LOG	Exit From Remote Host	console=true				
