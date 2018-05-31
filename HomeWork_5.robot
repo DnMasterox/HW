@@ -1,7 +1,7 @@
 *** Settings ***
 Suite Setup       Login To Remote Host
 Suite Teardown    Exit From Remote Host
-Default Tags      Global
+Force Tags        Global
 Resource          Resources/Homework_5_res.tsv
 
 *** Test Cases ***
