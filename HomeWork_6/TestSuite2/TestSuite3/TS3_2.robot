@@ -1,5 +1,5 @@
 *** Settings ***
-Force Tags        s6
+Force Tags        TS3_2
 
 *** Test Cases ***
 TC6_1

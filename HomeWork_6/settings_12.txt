@@ -1,0 +1,7 @@
+-T
+--metadata version:1.1 
+--metadata author: Mykola Shumakov
+--metadata data: High priority
+--metadata type of testing: Non Functional
+TestSuite1
+*/TestSuite3

@@ -1,0 +1,8 @@
+-T
+--metadata version:1.1 
+--metadata author:Mykola Shumakov
+--metadata data: High priority
+--settag NON FUNCTIONAL
+--tagdoc HIGH:IMPORTANT .
+--rerunfailed output-20180601-132148.xml 
+TestSuite1
