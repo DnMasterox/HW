@@ -1,0 +1,22 @@
+*Variables*							
+${homepage}	http://commentssprintone.azurewebsites.net/						
+${browser}	chrome						
+${page_tittle}	Index						
+${edit_button}	css:#command-navigation > input:nth-child(3)						
+${alert_text}	Please, select one category						
+${category_droplist}	id:SelectedCateg						
+${category_number_four}	css:#SelectedCateg > option:nth-child(5)						
+${apply_button_id}	applybutton						
+${first_Number_in_table}	"xpath://*[@id=""main""]/div/div[5]/form/table"						
+${condition_value}	4						
+${table}	class:webgrid						
+${condition_cell_coordinates}	2						
+${condition_checkbox_coordinates}	"xpath://*[@id=""main""]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]"						
+${comment_field_id}	id:Text						
+${text_comment}	My new comment from RF						
+${checkbox_active_state}	Active						
+${Cat_5_id}	Categories						
+${Cur_cat_select}	CurSelect						
+${Save_n_return}	default:Save & Return						
+${statuses_droplist_id}	SelectedStatus						
+${statuses_inactive_css}	css:#SelectedStatus > option:nth-child(3)						
