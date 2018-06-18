@@ -1,4 +1,22 @@
 *** Settings ***
+Documentation     Automate the test case:
+...               1. Open http://commentssprintone.azurewebsites.net/
+...               2. Check the page title.
+...               3. Click Edit...
+...               4. Check the alert message "Please, select one category".
+...               5. Click OK.
+...               6. Select category name "Cat4".
+...               7. Click Apply button.
+...               8. Check that the first number in the table is 4.
+...               9. Check the checkbox in the first row in the table.
+...               10. Click Edit...
+...               11. Change comment text to "My new comment from RF".
+...               12. Unset "Active" checkbox.
+...               13. Add "Cat5" to "Selected Categories".
+...               14. Click on Save & Return.
+...               15. Select "Inactive" Statuses.
+...               16. Click Apply.
+...               17. Find the comment "My new comment from RF" in the table.
 Library           SeleniumLibrary
 Resource          Resources/Homework_9_res.tsv
 

@@ -1,4 +1,22 @@
 *** Settings ***
+Documentation     You should have access to any remote server with login/password and public key.
+...               Test case #1:
+...               1. Open connection to remote server.
+...               2. Login with login/password.
+...               3. Change directory to /tmp.
+...               4. Create a file "demo.txt" with text: "this is a text file".
+...               5. Run "ls" command.
+...               6. Check that the file "demo.txt" is present.
+...               7. Upload this file to the local PC.
+...               8. Open new connection to the same server.
+...               9. Login with public key to remote server.
+...               10. Use Write keyword: "cat /tmp/demo.txt".
+...               11. Use Read Until, to check content of "demo.txt" file.
+...               12. Switch connection to the first one.
+...               13. Delete "demo.file".
+...               14.Switch connection to the second one.
+...               15. Check that this file is absent.
+...               16. Close all connections.
 Library           SSHLibrary
 
 *** Variables ***

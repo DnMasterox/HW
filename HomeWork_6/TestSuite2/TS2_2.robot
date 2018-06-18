@@ -1,5 +1,6 @@
 *** Settings ***
 Force Tags        8
+Resource          ../Control.txt
 
 *** Test Cases ***
 TC4_1
