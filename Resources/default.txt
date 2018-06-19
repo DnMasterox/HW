@@ -1,1 +1,7 @@
-dbapiModuleName=pymysql dbName=mshumakov dbUsername=mshumakov dbPassword=mshumakovpass dbHost=192.168.242.44 dbPort=1433
+[default]
+dbapiModuleName=pymysql 
+dbName=mshumakov 
+dbUsername=mshumakov 
+dbPassword=mshumakovpass 
+dbHost=192.168.242.44 
+dbPort=1433

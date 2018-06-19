@@ -19,11 +19,9 @@ Test Case #1
     ...    2. Select from demo1 people with age < 7. Implement it as a custom keyword.
     ...    3. Test fail if salary > 0
     ...    4. Disconnect from databas
-    Connect to Database    dbapiModuleName=${dbapiModuleName}    dbName=${dbName}    dbUsername=${dbUsername}    dbPassword=${dbPassword}    dbHost=${dbHost}    dbPort=${dbPort}
-    Table Must Exist    ${table_name}
-    @{temp}    Query    select * from demo1 where demo1.age <= 7 and demo1.salary <=0
+    Connect to DB with cfg file
+    @{temp}    Custom request keyword    ${table_name}
     Should Not Be Empty    @{temp}
-    Log many    ${temp}
     [Teardown]    Disconnect from database
 
 Test Case #2
@@ -46,12 +44,22 @@ Test Case #3
     ...    5. Disconnect from database
     Connect To Database Using Custom Params    ${dbapiModuleName}    database='${dbName}', user='${dbUsername}', password='${dbPassword}', host='${dbHost}'
     Table Must Exist    ${table_name}
-    Execute Sql Script    ${full_path_to_setup_file}
-    ${row_counter}    Row Count    ${select_all_request_body}
+    ${row_counter}    Execute script and count rows    ${full_path_to_setup_file}
     Should Be Equal    ${row_counter}    ${condition_row_count}
     [Teardown]    Disconnect from database
 
 *** Keywords ***
 Connect to DB with cfg file
-    Connect to Database    ${dbapiModuleName}    dbConfigFile = /Users/mshuma/Documents/HW/Resources/default.txt
+    Connect to Database    dbConfigFile=C:\\default.txt
     Table Must Exist    ${table_name}
+
+Execute script and count rows
+    [Arguments]    ${path_to_script}
+    Execute Sql Script    ${path_to_script}
+    ${counter}    Row Count    ${select_all_request_body}
+    Return    ${counter}
+
+Custom request keyword
+    [Arguments]    ${base_name}
+    ${requested_data }    Query    select * from ${base_name} where ${base_name}.age <= 7 and ${base_name}.salary <=0
+    Return    ${requested_data }
