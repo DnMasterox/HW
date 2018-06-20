@@ -5,3 +5,4 @@ dbUsername=mshumakov
 dbPassword=mshumakovpass 
 dbHost=192.168.242.44 
 dbPort=1433
+charset=UTF-8

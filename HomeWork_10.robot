@@ -10,6 +10,7 @@ ${dbHost}         192.168.242.44
 ${dbPort}         3306
 ${table_name}     demo1
 ${full_path_to_setup_file}    /Users/mshuma/Documents/HW/Resources/setup.txt
+${full_path_to_cfg_file}    /Users/mshuma/Documents/HW/Resources/default.cfg
 ${select_all_request_body}    select * from demo1
 ${condition_row_count}    ${10}
 
@@ -50,16 +51,16 @@ Test Case #3
 
 *** Keywords ***
 Connect to DB with cfg file
-    Connect to Database    dbConfigFile=C:\\default.txt
+    Connect to Database    dbConfigFile=${full_path_to_cfg_file}
     Table Must Exist    ${table_name}
 
 Execute script and count rows
     [Arguments]    ${path_to_script}
     Execute Sql Script    ${path_to_script}
     ${counter}    Row Count    ${select_all_request_body}
-    Return    ${counter}
+    [Return]    ${counter}
 
 Custom request keyword
     [Arguments]    ${base_name}
     ${requested_data }    Query    select * from ${base_name} where ${base_name}.age <= 7 and ${base_name}.salary <=0
-    Return    ${requested_data }
+    [Return]    ${requested_data }
