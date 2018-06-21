@@ -21,8 +21,8 @@ Test Case #1
     ...    3. Test fail if salary > 0
     ...    4. Disconnect from databas
     Connect to DB with cfg file
-    @{temp}    Custom request keyword    ${table_name}
-    Should Not Be Empty    @{temp}
+    @{temp}    Select children with salary from table    ${table_name}
+    Should Be Empty    @{temp}
     [Teardown]    Disconnect from database
 
 Test Case #2
@@ -45,8 +45,9 @@ Test Case #3
     ...    5. Disconnect from database
     Connect To Database Using Custom Params    ${dbapiModuleName}    database='${dbName}', user='${dbUsername}', password='${dbPassword}', host='${dbHost}'
     Table Must Exist    ${table_name}
-    ${row_counter}    Execute script and count rows    ${full_path_to_setup_file}
-    Should Be Equal    ${row_counter}    ${condition_row_count}
+    Add ten records to table    ${full_path_to_setup_file}
+    ${counter}    Row Count    ${select_all_request_body}
+    Should Be Equal    ${counter}    ${condition_row_count}
     [Teardown]    Disconnect from database
 
 *** Keywords ***
@@ -54,13 +55,11 @@ Connect to DB with cfg file
     Connect to Database    dbConfigFile=${full_path_to_cfg_file}
     Table Must Exist    ${table_name}
 
-Execute script and count rows
+Add ten records to table
     [Arguments]    ${path_to_script}
     Execute Sql Script    ${path_to_script}
-    ${counter}    Row Count    ${select_all_request_body}
-    [Return]    ${counter}
 
-Custom request keyword
+Select children with salary from table
     [Arguments]    ${base_name}
-    ${requested_data }    Query    select * from ${base_name} where ${base_name}.age <= 7 and ${base_name}.salary <=0
+    ${requested_data }    Query    select * from ${base_name} where ${base_name}.age < 7 and ${base_name}.salary > 0
     [Return]    ${requested_data }
