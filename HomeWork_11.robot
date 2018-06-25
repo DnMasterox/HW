@@ -54,7 +54,7 @@ Test Case #4
     [Documentation]    Run Get https://httpbin.org/delay/3 with small timeout 1s
     ...    Check error code
     Create Session    TC_4    ${Main_URL_part}    verify=true    timeout=1
-    ${response_body}    Get Request    TC_4    ${TC_4_URL_part}
+    ${response_body}    Get Request    TC_4    ${TC_4_URL_part}/3
     Should Be Equal    ${response_body.status_code}    ${response_code_Not_Found}
 
 Test Case #5
