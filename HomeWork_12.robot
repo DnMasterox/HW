@@ -31,17 +31,20 @@ ${NAME_OF_FILE}    notepad.exe
 
 *** Test Cases ***
 Test_case#1
-    ${list_of_files_in_curdir}    MyLibrary.get_list_of_files_from_directory    ${CURDIR}
-    ${availability_result}    MyLibrary.check_file_in_list    ${NAME_OF_FILE}    ${list_of_files_in_curdir}
-    Should Be True    ${availability_result}
-    ${get_md5_for_file}    MyLibrary.get_md5_of_file_by_path    ${CURDIR}/${NAME_OF_FILE}
-    ${comparing_md5_results}    MyLibrary.compare_values    ${get_md5_for_file}    ${EXPECTED_VALUE}
-    Should Be True    ${comparing_md5_results}
+    [Documentation]    MyLibrary is a library that contains functions-keywords
+    ${list_of_files_in_curdir}    MyLibrary.List of files    ${CURDIR}
+    ${availability_result}    MyLibrary.File is in folder?    ${NAME_OF_FILE}    ${list_of_files_in_curdir}
+    #Should Be True    ${availability_result}
+    MyLibrary.Values are equal?    ${availability_result}    ${true}
+    ${get_md5_for_file}    MyLibrary.Calc ${CURDIR}/${NAME_OF_FILE} MD5
+    ${comparing_md5_results}    MyLibrary.Values are equal?    ${get_md5_for_file}    ${EXPECTED_VALUE}
+    MyLibrary.Values are equal?    ${comparing_md5_results}    ${true}
 
 Test_case#2
-    ${list_of_files_in_curdir}    MyLibrary_v1.get_list_of_files_from_directory
-    ${availability_result}    MyLibrary_v1.check_file_in_list    ${NAME_OF_FILE}    ${list_of_files_in_curdir}
-    Should Be True    ${availability_result}
-    ${get_md5_for_file}    MyLibrary_v1.get_md5_of_file_by_path    /${NAME_OF_FILE}
-    ${comparing_md5_results}    MyLibrary_v1.compare_values    ${get_md5_for_file}    ${EXPECTED_VALUE}
-    Should Be True    ${comparing_md5_results}
+    [Documentation]    MyLibrary_v1 is a library that was realized in class MyLibrary_v1
+    ${list_of_files_in_curdir}    MyLibrary_v1.List of files
+    ${availability_result}    MyLibrary_v1.File is in folder?    ${NAME_OF_FILE}    ${list_of_files_in_curdir}
+    MyLibrary.Values are equal?    ${availability_result}    ${true}
+    ${get_md5_for_file}    MyLibrary_v1.Calc /${NAME_OF_FILE} MD5
+    ${comparing_md5_results}    MyLibrary_v1.Values are equal?    ${get_md5_for_file}    ${EXPECTED_VALUE}
+    MyLibrary.Values are equal?    ${comparing_md5_results}    ${true}
