@@ -12,8 +12,8 @@ def clear_file(filepath):  # Clear_file :it will clear your file.
 
 
 @keyword('Append file')
-def append_file(filepath, delimiter, data):  # Append_file :it will append the data you wanted to in your script.
-    with open(filepath, 'a') as f:
-        csv.Dialect.delimiter = delimiter
-        obj1 = csv.writer(f)
+def append_file(filepath, data):  # Append_file :it will append the data you wanted to in your script.
+    with open(filepath, 'a') as file:
+        # csv.Dialect.delimiter = delimiter
+        obj1 = csv.writer(file, delimiter='|', quoting=csv.QUOTE_NONE, escapechar=' ')
         obj1.writerow(data)
