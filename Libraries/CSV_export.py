@@ -12,8 +12,10 @@ def clear_file(filepath):  # Clear_file :it will clear your file.
 
 
 @keyword('Append file')
-def append_file(filepath, data):  # Append_file :it will append the data you wanted to in your script.
+def append_file(filepath, data):
+    # Append_file :it will append the data you wanted to in your script.
     with open(filepath, 'a') as file:
         # csv.Dialect.delimiter = delimiter
-        writer = csv.writer(file, delimiter='|', quoting=csv.QUOTE_NONE, escapechar=' ', lineterminator='\n')
+        writer = csv.writer(file, delimiter='|', quoting=csv.QUOTE_NONE,
+                            escapechar=' ', lineterminator='\n')
         writer.writerow(data)
