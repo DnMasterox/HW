@@ -20,7 +20,8 @@ ${source_file_extension}    .csv
 ...    CUSTOMER_TITLE     UNIQUE_ID     COMMUNICATION_ID     BRAND_CODE
 ...    RUN_ID    LTR_TYP_CD     LTR_PRY_CD     LETTER_SHORT_DESC     DOCUMENT_DT
 ...     PRODCT_NAME     PRODCT_L4D     LETTER_GUID    LETTER_ID
-${message_for_window}    How many strings of data do you need? Please NOTE generation of 1 million strings will take 3 hours
+${message_for_window}    How many strings of data do you need?
+...   Please NOTE generation of 1 million strings will take 3 hours
 ${data_format}    -Dec-20
 
 *** Test Cases ***
@@ -28,7 +29,7 @@ Create main CSV
    Create CSV with fake data
 
 Create secondary CSV
-   Create CSV with fake data    secondary
+   Create CSV with fake data    Secondary
 
 *** Keywords ***
 Create CSV file
@@ -37,20 +38,20 @@ Create CSV file
     clear file    ${pathtofile}
 
 Create CSV with fake data
-    [Arguments]    ${priority}=main
+    [Arguments]    ${priority}=Main
     ${source_file}    Generate file name with format    ${priority}
     ${path_to_file}    Catenate    ${CURDIR}/Resources/${source_file}
     Create CSV file    ${path_to_file}
     APPEND FILE    ${path_to_file}    ${first_string_CSV}
     Log many    ${first_string_CSV}
-    ${test_data_lines}    Get Value From User    message=${message_for_window}    default_value=100
+    ${test_data_lines}    Get Value From User    message=${priority}${SPACE}file${\n}${message_for_window}    default_value=100
     Generate CSV data    ${path_to_file}    ${test_data_lines}
 
 Generate file name with format
     [Arguments]    ${priority}
     ${first_symbol} =    Generate Random String    1    [LOWER]
     ${last_symbol} =    Random Int   min=1    max=9
-    ${file_name} =    Run Keyword if    '${priority}'=='main'    Catenate    SEPARATOR=    ${first_symbol}    _
+    ${file_name} =    Run Keyword if    '${priority}'=='Main'    Catenate    SEPARATOR=    ${first_symbol}    _
     ...    ${last_symbol}    ${source_file_extension}
     ...     ELSE     Catenate    SEPARATOR=    ${first_symbol}    _
     ...    ${last_symbol}    _secondary    ${source_file_extension}
