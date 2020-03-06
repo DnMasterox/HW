@@ -7,11 +7,11 @@ ${alert_text}	Please, select one category
 ${category_droplist}	id:SelectedCateg						
 ${category_number_four}	css:#SelectedCateg > option:nth-child(5)						
 ${apply_button_id}	applybutton						
-${first_Number_in_table}	"xpath://*[@id=""main""]/div/div[5]/form/table"						
+${first_Number_in_table}	xpath://table[@class='webgrid']						
 ${condition_value}	4						
 ${table}	class:webgrid						
 ${condition_cell_coordinates}	2						
-${condition_checkbox_coordinates}	"xpath://*[@id=""main""]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]"						
+${condition_checkbox_coordinates}	xpath://tr[1]/td[1]/input[@name='SelectedId']						
 ${comment_field_id}	id:Text						
 ${text_comment}	My new comment from RF						
 ${checkbox_active_state}	Active						
