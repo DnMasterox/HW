@@ -11,6 +11,7 @@ Library           FakerLibrary
 Library           String
 Library           Collections
 Library           Dialogs
+Library           Libraries/thread.py
 Library           ../../AppData/Local/Programs/Python/Python37-32/Lib/site-packages/FakerLibrary/keywords.py
 
 *** Variables ***
